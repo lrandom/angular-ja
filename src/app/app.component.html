@@ -1,28 +1,9 @@
-<p>{{hello}}</p>
-<button (click)="changeText()">Change Text</button>
-<ul>
-  <li *ngFor="let item of transformLanguages" [ngClass]="{'hide':!item.isShow}">
-    {{item.name}}
-    <button (click)="toggleItem(item)">X</button>
-  </li>
-</ul>
-
-<p *ngIf="showText">
-  Sunt fraticinidaes consumere placidus, salvus spatiies.
-  Sunt fraticinidaes consumere placidus, salvus spatiies.
-  Sunt fraticinidaes consumere placidus, salvus spatiies.
-  Sunt fraticinidaes consumere placidus, salvus spatiies.
-</p>
-<button (click)="toggleText()">Toggle Text</button>
-
-
-<button (click)="addMoreItem()">Add More</button>
-
-<p [ngClass]="{'bg-red':addBG}">
-  Assimilant superbe ducunt ad peritus exsul.
-  Assimilant superbe ducunt ad peritus exsul.
-  Assimilant superbe ducunt ad peritus exsul.
-  Assimilant superbe ducunt ad peritus exsul.
-</p>
-
-<button (click)="toggleBG()">Change background color</button>
+<div>
+  <nav style="display: flex;gap:2rem">
+    <a routerLink="" routerLinkActive="active">Home</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+    <a routerLink="/contact" routerLinkActive="active">Contact</a>
+  </nav>
+  <router-outlet>
+  </router-outlet>
+</div>
