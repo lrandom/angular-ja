@@ -1,8 +1,9 @@
 <p>{{hello}}</p>
 <button (click)="changeText()">Change Text</button>
 <ul>
-  <li *ngFor="let item of languages">
-    {{item}} <button>X</button>
+  <li *ngFor="let item of transformLanguages" [ngClass]="{'hide':!item.isShow}">
+    {{item.name}}
+    <button (click)="toggleItem(item)">X</button>
   </li>
 </ul>
 
