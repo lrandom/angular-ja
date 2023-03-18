@@ -7,13 +7,17 @@ import {FormsModule} from "@angular/forms";
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { SlideComponent } from './slide/slide.component';
+import { TabComponent } from './tab/tab.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    SlideComponent,
+    TabComponent
   ],
   imports: [
     BrowserModule,

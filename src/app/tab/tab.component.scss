@@ -1,0 +1,41 @@
+.tab-wrapper {
+  width: 80%;
+  margin: 0px auto;
+
+  .tab-title-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    > div {
+      box-sizing: border-box;
+      font-size: 1rem;
+      font-weight: 600;
+      flex-basis: 33%;
+      color: #000;
+      margin: 0px;
+      padding: 0px;
+      cursor: pointer;
+      padding: 2rem;
+      background: #cdcdcd;
+      text-align: center;
+
+      &.active {
+        background: #fff;
+      }
+    }
+  }
+
+  > .tab-content-wrapper {
+    > div {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,29 @@
+.slider-wrapper {
+  width: 80%;
+  margin: 0px auto;
+
+  .active-img {
+    img {
+      width: 100%;
+    }
+  }
+
+  > .thumbnails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 100px;
+    gap: 10px;
+
+    > div {
+      width: 30%;
+      overflow: hidden;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
