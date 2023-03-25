@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {RestaurantServiceService} from "../services/restaurant-service.service";
 
 interface NoteItem {
   title: string;
@@ -13,77 +14,49 @@ const NOTE_KEY: string = "notes"
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   title = 'Note App';
-  public notes: Array<NoteItem> = [];
-  public noteTitle: string = "";
-  public noteContent: string = "";
+  restaurantsList: Array<any> = new Array<any>();
 
-  public activeIndexNote = -1;
+  constructor(private restaurantService: RestaurantServiceService) {
+    let num = 10;
+    /*setTimeout(() => {
+      num += 20;
+      console.log(num);
+    },3000);*/
+    //ES6
 
-  constructor() {
-    this._syncData(true);
+
+    /*p.then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    });*/
+
+    //ES7 -> async/await keyword
+    //SELF INVOKE FUNCTION
+
+
   }
 
-  saveNote() {
-    //destructor // rest operator // spread operator
-    if (this.activeIndexNote != -1) {
-      this.notes[this.activeIndexNote] = {
-        title: this.noteTitle,
-        content: this.noteContent
-      };
-    } else {
-      this.notes = [
-        ...this.notes,
-        {
-          title: this.noteTitle,
-          content: this.noteContent
-        }
-      ]
-    }
+  /*  async abc() {
+      try {
+        const p = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            reject(new Error("error while counting"));
+          }, 3000);
+        })
+        const data = await p;
+        console.log(data);
+      } catch (e) {
+        console.log(e);
+      }
+    }*/
 
-    /*this.notes.push({
-
-    })*/
-    this.resetForm();
-    this._syncData();
-  }
-
-  public resetForm() {
-    this.noteTitle = "";
-    this.noteContent = "";
-    this.activeIndexNote = -1;
-  }
-
-  public deleteNote(index: number) {
-    const c = confirm("Are you sure you want to delete this note?");
-    if (!c) return;
-    this.notes.splice(index, 1);
-    this._syncData();
-  }
-
-  public updateNote(index: number) {
-    this.activeIndexNote = index;
-    const note = this.notes[index];
-    this.noteTitle = note.title;
-    this.noteContent = note.content;
+  loadRestaurants() {
+    this.restaurantService.getRestaurants().subscribe(ob =>
+      this.restaurantsList = ob
+    );
   }
 
 
-  private _syncData(isFirstTime: boolean = false) {
-    if (isFirstTime) {
-      this._readData();
-    } else {
-      this._writeData();
-    }
-  }
-
-  private _readData() {
-    this.notes = JSON.parse(localStorage.getItem(NOTE_KEY) || '[]');
-  }
-
-  private _writeData() {
-    const notes = JSON.stringify(this.notes);
-    localStorage.setItem(NOTE_KEY, notes);
-  }
 }

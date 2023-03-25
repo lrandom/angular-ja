@@ -1,58 +1,9 @@
 <div class="container mx-auto py-6">
-  <div class="grid gap-4 grid-cols-3 p-8 border rounded-md border-2 h-screen">
-    <div class="md:col-span-1 md:h-full h-[400px] col-span-3  overflow-y-auto border-2 border-dashed p-2 rounded-md">
-      <h1 class="text-2xl font-bold">Notes</h1>
-      <div *ngIf="notes.length==0">
-        Empty Notes
-      </div>
-      <ul class="mt-2">
-        <li *ngFor="let note of notes,index as i"
-            [class.bg-gray-200]="activeIndexNote!=i"
-            [class.bg-blue-400]="activeIndexNote==i"
-            class="p-2  mt-2 rounded-md cursor-pointer"
-            (click)="updateNote(i)">
-          {{note.title}}
-          <span class="float-right mt-1 cursor-pointer" (click)="deleteNote(i)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
-                 viewBox="0 0 16 16">
-  <path
-    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-</svg>
-          </span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="md:col-span-2 col-span-3">
-      <form>
-        <div>
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" [(ngModel)]="noteTitle"
-                 class="border-2 rounded-md p-2 border-solid w-full">
-        </div>
-
-        <div class="mt-2">
-          <label for="content">Content</label>
-          <textarea name="content" id="content"
-                    [(ngModel)]="noteContent"
-                    class="border-2 rounded-md p-2 border-solid w-full h-[300px]"></textarea>
-        </div>
-
-        <div class="mt-2">
-          <button (click)="saveNote()"
-                  class="bg-blue-400 text-white px-10 py-3 block mx-auto rounded-md border-0 hover:bg-blue-600">
-            {{activeIndexNote == -1 ? 'Add' : 'Update'}}
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <button (click)="resetForm()"
-          class="fixed right-5 bottom-5 bg-blue-400 text-white p-6 rounded-full border-0 hover:bg-blue-600">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus"
-         viewBox="0 0 16 16">
-      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-    </svg>
-  </button>
+  <ul>
+    <li *ngFor="let restaurant of restaurantsList">
+      {{restaurant.r_title}}<br>
+      {{restaurant.r_description}}
+    </li>
+  </ul>
+  <button (click)="loadRestaurants()" class="border-2 p-3">Load Restaurant</button>
 </div>
